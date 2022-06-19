@@ -1,0 +1,1 @@
+This folder is intentionally kept empty as it is generated with catkin by default.

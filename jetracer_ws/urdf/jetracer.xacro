@@ -1,0 +1,124 @@
+<?xml version='1.0' ?>
+
+<robot name="jetracer" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+  <link name="base">
+    <visual>
+      <orgin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="1 2 0.3"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!--Front left wheel-->
+  <joint name="fl_holder_joint" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-0.4" upper="0.4" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="-0.5 0.8 0"/>
+    <parent link="base"/>
+    <child link="fl_wheel_link"/>
+  </joint>
+
+  <link name="fl_wheel_link">
+    <visual>
+      <orgin rpy="0 0 0" xyz="-0.7 0.8 0"/>
+      <geometry>
+        <box size="0 0 0"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="fl_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 1.57 0" xyz="-0.2 0 0"/>
+    <parent link="fl_wheel_link"/>
+    <child link="fl_wheel"/>
+  </joint>
+
+  <link name="fl_wheel">
+    <visual>
+      <orgin rpy="0 0 0" xyz="-0.7 0.8 0"/>
+      <geometry>
+        <cylinder radius="0.4" length="0.2"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <!--Front right wheel-->
+  <joint name="fr_holder_joint" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-0.4" upper="0.4" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="0.5 0.8 0"/>
+    <parent link="base"/>
+    <child link="fr_wheel_link"/>
+  </joint>
+
+  <link name="fr_wheel_link">
+    <visual>
+      <orgin rpy="0 0 0" xyz="0.7 0.8 0"/>
+      <geometry>
+        <box size="0 0 0"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="fr_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 1.57 0" xyz="0.2 0 0"/>
+    <parent link="fr_wheel_link"/>
+    <child link="fr_wheel"/>
+  </joint>
+
+  <link name="fr_wheel">
+    <visual>
+      <orgin rpy="0 0 0" xyz="0.7 0.8 0"/>
+      <geometry>
+        <cylinder radius="0.4" length="0.2"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <!--Rear left wheel-->
+  <joint name="rl_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 1.57 0" xyz="-0.7 -0.8 0"/>
+    <parent link="base"/>
+    <child link="rl_wheel"/>
+  </joint>
+
+  <link name="rl_wheel">
+    <visual>
+      <orgin rpy="0 0 0" xyz="-0.7 -0.8 0"/>
+      <geometry>
+        <cylinder radius="0.4" length="0.2"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <!--Rear right wheel-->
+  <joint name="rr_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 1.57 0" xyz="0.7 -0.8 0"/>
+    <parent link="base"/>
+    <child link="rr_wheel"/>
+  </joint>
+
+  <link name="rr_wheel">
+    <visual>
+      <orgin rpy="0 0 0" xyz="0.7 -0.8 0"/>
+      <geometry>
+        <cylinder radius="0.4" length="0.2"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+</robot>
